@@ -11,7 +11,7 @@ class RiverRun::CLI
   end
 
   def list_events
-    @events = RiverRun::Event.today
+    @events = RiverRun::Event.today.reverse
     puts "\n"
     @events.each.with_index(1) do |event, i|
       puts "#{i}. #{event.name} [#{event.date}]"
@@ -25,6 +25,7 @@ class RiverRun::CLI
     input = gets.strip
     if input.to_i > 0
       if @events[input.to_i - 1]
+        #want to get heredoc of event info ... maybe @events[index].info
         puts "\n\t" + @events[input.to_i - 1].name
       else
         puts "\n\tI don't recognize that input, please type [1, 2, 3] or \"exit\""

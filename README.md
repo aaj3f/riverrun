@@ -1,8 +1,6 @@
-# Riverrun
+# RiverRun
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/riverrun`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A Practice gem to model an example CLI for an entity like Winston-Salem NC's RiverRun Film Festival. My goal for this project is to learn how to begin programming a multi-directory CLI app that manipulates API-scraped data.
 
 ## Installation
 
@@ -22,7 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+When you run the gem, it will greet with user with a brief rundown of upcoming events sponsored by RiverRun Film Festival.
+You can follow the CLI instructions to learn more about individual events or to travel directly to RiverRun's website.
 
 ## Development
 

@@ -30,3 +30,11 @@ Our upcoming schedule includes...
 2. Holiday Affair with actor Gordon Gebert on 11/17 & 11/18!
 3. RiverRun presents "The Best of the 2018 Greensboro 48 Hour Film Project" on 11/13!
 Type [1, 2, 3] to learn more about one of these events!
+
+
+What is an event?
+
+An event has a name
+An event has a date
+An event has more information
+An event has a URL

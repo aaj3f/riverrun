@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-require "./lib/riverrun"
+require "bundler/setup"
+require "riverrun"
 
 RiverRun::CLI.new.call

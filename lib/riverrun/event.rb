@@ -49,6 +49,5 @@ class RiverRun::Event
     scrape_hash
   end
 
-  def
 
 end

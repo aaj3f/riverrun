@@ -14,7 +14,7 @@ class RiverRun::CLI
     @events = RiverRun::Event.today.reverse
     puts "\n"
     @events.each.with_index(1) do |event, i|
-      puts "#{i}. #{event.name} [#{event.date}]"
+      puts "  #{i}. #{event.name} [#{event.date}]"
     end
   end
 
@@ -26,7 +26,10 @@ class RiverRun::CLI
     if input.to_i > 0
       if @events[input.to_i - 1]
         #want to get heredoc of event info ... maybe @events[index].info
-        puts "\n\t" + @events[input.to_i - 1].name
+
+        `open #{@events[input.to_i - 1].url}`
+        puts "\n...opening information about event in browser..."
+
       else
         puts "\n\tI don't recognize that input, please type [1, 2, 3] or \"exit\""
       end

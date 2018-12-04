@@ -1,5 +1,2 @@
-require "riverrun/version"
-
-module Riverrun
-  # Your code goes here...
-end
+require_relative "./riverrun/version"
+require_relative "./riverrun/cli"

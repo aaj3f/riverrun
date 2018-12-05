@@ -1,3 +1,8 @@
+# Current To-Do
+
+1. Returning to "list" in the CLI scrapes the list information anew each time,
+    should program to only do that when the app opens
+
 # Goals
 
 1. Learn to write a CLI gem

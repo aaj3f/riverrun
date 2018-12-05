@@ -1,15 +1,12 @@
-require 'date'
-require 'time'
-
 class RiverRun::Event
-  attr_accessor :name, :url
+  attr_accessor :name, :url, :more_info
   attr_writer :date
 
-  @@events = []
-
-  def initialize
-    @@events << self
-  end
+  # @@events = []
+  #
+  # def initialize
+  #   @@events << self
+  # end
 
   def date
     if @date.size == 1
@@ -17,11 +14,6 @@ class RiverRun::Event
     elsif @date.size == 2
       "#{@date[0].strftime("%m/%d")} & #{@date[1].strftime("%m/%d")}"
     end
-  end
-
-  def info
-    # Needs to return heredoc of scraped info about specific Event object that it's called on
-    #
   end
 
   def self.today
@@ -37,6 +29,7 @@ class RiverRun::Event
       event.date = namedate_string.slice!(/\so?n?\s?\d\d?\/.*$/).scan(/\d{2}\/\d\d?/).map {|d| DateTime.parse(d)}
       event.name = namedate_string
       event.url = mini_array[1]
+      event.more_info = event.scrape_more_info # array
     end
 
     [event_1, event_2, event_3]
@@ -49,5 +42,11 @@ class RiverRun::Event
     scrape_hash
   end
 
+  def scrape_more_info
+    more_info_array = []
+    doc = Nokogiri::HTML(open(self.url))
+    doc.search("main p").each {|p| more_info_array << p.text }
+    more_info_array.delete_if {|p| p.empty? }
+  end
 
 end

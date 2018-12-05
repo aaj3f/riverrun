@@ -25,11 +25,25 @@ class RiverRun::CLI
     input = gets.strip
     if input.to_i > 0
       if @events[input.to_i - 1]
-        #want to get heredoc of event info ... maybe @events[index].info
-
-        `open #{@events[input.to_i - 1].url}`
-        puts "\n...opening information about event in browser..."
-
+        @events[input.to_i - 1].more_info.each.with_index do |p, i|
+          puts "\n"
+          p.line_pace
+          unless i == (@events[input.to_i - 1].more_info.size - 1)
+            puts "\n\nPress any key to continue...\n"
+            STDIN.getch
+          else
+            puts "\n"
+          end
+        end
+        puts "\nType \"go\" to visit the RiverRun website for this event,"
+        print "or type \"list\" to return to the main list of upcoming events: "
+        input2 = gets.strip
+        if input2 == "go"
+          `open #{@events[input.to_i - 1].url}`
+          puts "\n...opening information about event in browser..."
+        else
+          list_events
+        end
       else
         puts "\n\tI don't recognize that input, please type [1, 2, 3] or \"exit\""
       end
@@ -43,8 +57,17 @@ class RiverRun::CLI
     ask_input unless input == "exit"
   end
 
+  def line_pace
+    self.each_char {|c| putc c ; sleep 0.02 ; $stdout.flush}
+  end
+
   def exit_method
     puts "\nThank you for stopping by! Take care!\n\n"
   end
 
 end
+
+
+# if we want to open page in browser use:
+      # `open #{@events[input.to_i - 1].url}`
+      # puts "\n...opening information about event in browser..."

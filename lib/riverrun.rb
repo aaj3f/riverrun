@@ -5,6 +5,7 @@ require "nokogiri"
 require "io/console"
 require 'date'
 require 'time'
+require 'colorize'
 
 require_relative "./riverrun/version"
 require_relative "./riverrun/cli"

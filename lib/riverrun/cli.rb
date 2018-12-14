@@ -7,7 +7,7 @@ class RiverRun::CLI
   end
 
   def welcome
-    puts "\nWelcome to RiverRun Film Festival's CLI App!"
+    puts "\nWelcome to RiverRun Film Festival's CLI App!".cyan
   end
 
   def list_events
@@ -19,9 +19,9 @@ class RiverRun::CLI
   end
 
   def ask_input
-    puts "\nEnter [1, 2, 3] for more information on one of these events,"
-    puts "or type \"list\" to see the list of events again,"
-    print "or type \"exit\" to leave the program: "
+    puts "\nEnter [1, 2, 3] for more information on one of these events,".cyan
+    puts "or type \"list\" to see the list of events again,".cyan
+    print "or type \"exit\" to leave the program: ".cyan
     input = gets.strip
     if input.to_i > 0
       if @events[input.to_i - 1]
@@ -29,14 +29,14 @@ class RiverRun::CLI
           puts "\n"
           p.line_pace
           unless i == (@events[input.to_i - 1].more_info.size - 1)
-            puts "\n\nPress any key to continue...\n"
+            puts "\n\nPress any key to continue...\n".light_blue
             STDIN.getch
           else
             puts "\n"
           end
         end
-        puts "\nType \"go\" to visit the RiverRun website for this event,"
-        print "or type \"list\" to return to the main list of upcoming events: "
+        puts "\nType \"go\" to visit the RiverRun website for this event,".cyan
+        print "or type \"list\" to return to the main list of upcoming events: ".cyan
         input2 = gets.strip
         if input2 == "go"
           `open #{@events[input.to_i - 1].url}`
